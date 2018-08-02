@@ -1,0 +1,26 @@
+{
+  "name": "bot_kakaotalk_translate",
+  "version": "1.0.0",
+  "description": "Kakaotalk bot for english translation",
+  "main": "kakaotalk-translation.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node kakaotalk-translation" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loveuns/bot_kakaotalk_translate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loveuns/bot_kakaotalk_translate/issues"
+  },
+  "homepage": "https://github.com/loveuns/bot_kakaotalk_translate#readme"
+}
