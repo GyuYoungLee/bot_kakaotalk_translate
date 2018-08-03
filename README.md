@@ -20,8 +20,13 @@
   - npm i --save express
   - npm i --save body-parser
   - npm i --save request
-  - npm i --save request-promise 
-- 플랫폼 : 카카오톡 플러스친구 API, 파파고 NMT API, 파파고 언어감지 API
+  - npm i --save request-promise
+  - npm i --save google-tts-api
+   
+- 플랫폼
+  - 카카오톡 플러스친구 API
+  - 파파고 NMT 번역 API
+  - 파파고 언어감지 API
 - 인프라 : heroku
 
 ### Reference
@@ -33,10 +38,11 @@
 - 파파고 앱 등록             : https://developers.naver.com/apps/#/register?api=ppg_n2mt
   - 파파고 번역 NMT API      : https://developers.naver.com/docs/papago/papago-nmt-example-code.md#node-js
   - 파파고 언어 감지 API     : https://developers.naver.com/docs/papago/papago-detectlangs-example-code.md#node-js 
-
+- 구글 TTS                   : https://github.com/zlargon/google-tts
 
 ### Commit history
 
 - 카카오톡 플러스친구 API : git checkout 42d4021
 - 파파고 번역 API         : git checkout feef1ff
 - 파파고 언어감지 API     : git checkout 3225aad
+- TTS 추가                : git checkout 63c1fb8

@@ -1,5 +1,6 @@
-const { NaverPapago, SUPPORTED_LANG_CODE } = require('../apis/naver.papago')
-const naverPapago   = new NaverPapago()
+const { NaverPapago, SUPPORTED_LANG_CODE }  = require('../apis/naver.papago')
+const googleTTS                             = require('google-tts-api')
+const naverPapago                           = new NaverPapago()
 
 module.exports = class KakaoService {
 
@@ -33,7 +34,6 @@ module.exports = class KakaoService {
     // 번역 처리
     async translate(content) {
         console.log('translate() - content:', content)
-        let translatedText
         let retMsg
 
         try {
@@ -50,13 +50,21 @@ module.exports = class KakaoService {
                 }  
             } else {
                 // 번역 처리
-                translatedText = await naverPapago.translate(content)
+                const translatedText = await naverPapago.translate(content)
                 console.log('translate() - translatedText:', translatedText)
+
+                // 발음 듣기
+                const url = await googleTTS(translatedText, naverPapago.targetLangCode, 1)
+                console.log('translate() - url:', url)   
 
                 // 응답 메시지
                 retMsg = {
                     message: {
-                        text: translatedText 
+                        text: translatedText, 
+                        message_button: {
+                            label: "발음 듣기",
+                            url
+                        }
                     }
                 }                  
             }   

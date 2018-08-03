@@ -13,7 +13,7 @@ router.post('/message', async (req, res) => {
     const { content, type } = req.body
 
     // 키보드 보여주기
-    if (content.includes('언어 변경')) {
+    if (content.includes('언어 변경') || content.includes('메뉴')) {
         const data = kakaoService.showKeyboard()
         return res.send(data)
     }
