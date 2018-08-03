@@ -1,11 +1,12 @@
 const router        = require('express').Router()
 const KakaoService  = require('../services/kakao.service')
-const Util          = require('../utils/Util')
 const kakaoService  = new KakaoService()
 
-
 router.get('/keyboard', (req, res) => {
-    res.send(Util.getKeyboard())
+    const data = {
+        "type": "text"
+    }
+    res.send(data)
 })
 
 router.post('/message', async (req, res) => {
