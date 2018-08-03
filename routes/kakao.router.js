@@ -8,23 +8,26 @@ router.get('/keyboard', (req, res) => {
     res.send(Util.getKeyboard())
 })
 
-router.post('/message', (req, res) => {
+router.post('/message', async (req, res) => {
     const { content, type } = req.body
-    console.log('/message - content:', content)
-    console.log('/message - type:', type)
 
     // 키보드 보여주기
     if (content.includes('언어 변경')) {
-        return res.send(kakaoService.showKeyboard())
+        const data = kakaoService.showKeyboard()
+        return res.send(data)
     }
 
     // 키보드 요청 처리
     if (content.includes('->')) {
-        return res.send(kakaoService.changeLanguage(content)) 
+        const data = kakaoService.changeLanguage(content)
+        return res.send(data) 
     }
 
     // 번역 처리
-    res.send(kakaoService.translate(content))
+    try {
+        const data = await kakaoService.translate(content)
+        res.send(data)
+    } catch(err) { console.error(err) }
 })
 
 module.exports = router

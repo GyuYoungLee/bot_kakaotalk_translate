@@ -1,33 +1,52 @@
-const Util = require('../utils/Util')
+const NaverPapago   = require('../apis/naver.papago')
+const Util          = require('../utils/Util')
+const naverPapago   = new NaverPapago()
+
 
 module.exports = class KakaoService {
 
+    // 키보드 보여주기
     showKeyboard() {
-        return {
+        const retMsg = {
             message: {
                 text: '번역 언어를 선택해 주세요'
             },
             keyboard: Util.getKeyboard()
         }
+
+        return retMsg
     }
 
+    // 키보드 요청 처리
     changeLanguage(content) {
         const splitMsg = content.split('->')
         const sourceLanguage = splitMsg[0]
         const targetLanguage = splitMsg[1].split(' ')[0]
 
-        return {
+        const retMsg = {
             message: {
-                text: `${sourceLanguage}를 입력해 주세요`
+                text: `${targetLanguage}로 번역을 시작합니다`
             }
         }
+
+        return retMsg
     }
 
-    translate(content) {
-        return {
-            message: {
-                text: content
-            }
+    // 번역 처리
+    async translate(content) {
+        let translatedText
+        try {
+            translatedText = await naverPapago.translate(content)
+        } catch(err) { 
+            console.error(err) 
         }
+
+        const retMsg = {
+            message: {
+                text: translatedText
+            }
+        }       
+
+        return retMsg
     }
-} 
+}
