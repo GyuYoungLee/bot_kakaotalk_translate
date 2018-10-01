@@ -9,7 +9,7 @@
 
 ### 봇 사용법
 
-- URL : http://pf.kakao.com/_HAYgC
+- URL : http://pf.kakao.com/_HAYgC/chat
 - 사용법
   - 언어 변경
 - ![이미지](./etc/20180803_165016.jpg)
